@@ -19,7 +19,7 @@
   height: 24px;
   width: 24px;
   grid-area: button;
-  border: solid #ffffff;
+  border: solid 1px #ffffff;
 }
 
 .profile__add-button {
@@ -27,7 +27,8 @@
   width: 150px;
   height: 50px;
   margin-left: auto;
-  border: solid #ffffff;
+  border: solid 2px #ffffff;
+  border-radius: 2px;
 }
 
 .profile__title {
@@ -52,7 +53,6 @@
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  background-position: center;
   margin-right: 24px;
 }
 
@@ -83,19 +83,17 @@
   .profile__description {
     width: 100%;
     text-align: center;
-    font-family: Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;
     letter-spacing: 0em;
     margin-top: 14px;
   }
+
   .profile__edit-button {
     margin-top: 30px;
     width: 18px;
     height: 18px;
-    top: 280px;
-    left: 268px;
   }
 
   .profile__add-button {
@@ -103,6 +101,7 @@
     margin-top: 36px;
     margin-left: 0;
   }
+
   .profile__image {
     margin: 0;
   }

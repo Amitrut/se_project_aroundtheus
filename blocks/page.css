@@ -16,9 +16,3 @@
   flex-direction: column;
   min-height: 100vh;
 }
-
-@media screen and (width: 320px) {
-  .page__content {
-    overflow-x: hidden;
-  }
-}
