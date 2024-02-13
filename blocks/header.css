@@ -5,7 +5,24 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
-@media screen and (width: 320px) {
+.header__logo {
+  width: 173px;
+  height: 33px;
+}
+
+@media screen and (width < 1000px) {
+  .header {
+    padding-top: 28px;
+    max-width: 730;
+    padding-bottom: 32px;
+  }
+
+  .header__logo {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (width < 321px) {
   .header {
     padding-top: 28px;
     max-width: 320px;
@@ -15,6 +32,6 @@
   .header__logo {
     width: 126px;
     height: 24px;
-    padding-left: 27px;
+    margin-left: 50px;
   }
 }
