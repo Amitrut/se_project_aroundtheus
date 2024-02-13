@@ -15,4 +15,8 @@
   .cards {
     margin-top: 0;
   }
+
+  .cards__list {
+    grid-gap: 0;
+  }
 }
