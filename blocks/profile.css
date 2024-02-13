@@ -20,6 +20,7 @@
   width: 24px;
   grid-area: button;
   border: solid 1px #ffffff;
+  cursor: pointer;
 }
 
 .profile__add-button {
@@ -29,6 +30,7 @@
   margin-left: auto;
   border: solid 2px #ffffff;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .profile__title {
@@ -40,6 +42,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__description {
@@ -51,6 +54,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__image {
@@ -61,7 +65,10 @@
   margin-right: 24px;
 }
 
-.profile__edit-button:hover,
+.profile__edit-button:hover {
+  opacity: 0.6;
+}
+
 .profile__add-button:hover {
   opacity: 0.6;
 }
