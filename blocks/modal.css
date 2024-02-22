@@ -68,17 +68,17 @@
 }
 
 .modal__button {
-  width: 100%; /* Ensures button stretches to the container's width */
-  padding: 10px; /* Add padding for better visual */
-  margin-top: 20px; /* Adds spacing above the button */
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
   border: none;
-  background-color: #000; /* Example color, change as needed */
-  color: #fff; /* Example color, change as needed */
-  font-size: 16px; /* Example size, change as needed */
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
   font-style: normal;
   cursor: pointer;
 }
 
 .modal__button:hover {
-  background-color: #333; /* Darker background on hover, change as needed */
+  background-color: #333;
 }
