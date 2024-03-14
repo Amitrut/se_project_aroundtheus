@@ -4,12 +4,6 @@
   list-style: none;
 }
 
-.card__image {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
 .card__description {
   display: flex;
   background-color: white;
@@ -38,7 +32,8 @@
 }
 
 .card__like-button {
-  background: transparent url(../images/Like_Vector.svg) center no-repeat;
+  background: url(../images/Like_Vector.svg) center no-repeat;
+  fill: transparent;
   width: 21px;
   height: 18px;
   flex-shrink: 0;
@@ -48,6 +43,40 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__like-button_active {
+  background: url(../images/Like_Vector_Black.svg) center no-repeat;
+}
+
+.card_header {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.card__image {
+  width: 282px;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__delete-button {
+  width: 18px;
+  height: 19.3px;
+  background: url(../images/Trash.svg) repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  position: relative;
+  top: 30px;
+  right: 10px;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (width: 320px) {
