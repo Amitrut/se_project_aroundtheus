@@ -120,6 +120,14 @@
   border-radius: 10px;
 }
 
+.photo-modal__title {
+  position: absolute;
+  bottom: -36px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14.52px;
+}
+
 @media screen and (width < 520px) {
   .modal__container {
     width: 238px;
@@ -157,5 +165,9 @@
     height: 30px;
     margin-bottom: 10px;
     left: 102%;
+  }
+
+  .photo-modal__title {
+    bottom: -32px;
   }
 }
