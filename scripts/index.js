@@ -78,6 +78,7 @@ function getCardElement(cardData) {
     photoModalImg.src = cardData.link;
     photoModalImg.alt = cardData.name;
     photoModalTitle.textContent = cardData.name;
+    openModal(photoModal);
   });
 
   const likeButton = cardElement.querySelector(".card__like-button");
@@ -147,21 +148,5 @@ function openModal(modal) {
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
-
-cardListEl.addEventListener("click", (event) => {
-  if (event.target.classList.contains("card__image")) {
-    const cardElement = event.target.closest(".card");
-    const cardData = {
-      name: cardElement.querySelector(".card__description-item").textContent,
-      link: event.target.src,
-    };
-    const photoModalImg = addPhotoModal.querySelector(".photo-modal__image");
-    const photoModalTitle = addPhotoModal.querySelector(".photo-modal__title");
-    photoModalImg.src = cardData.link;
-    photoModalImg.alt = cardData.name;
-    photoModalTitle.textContent = cardData.name;
-    openModal(addPhotoModal);
-  }
-});
 
 addPhotoModalButton.addEventListener("click", () => closeModal(addPhotoModal));
