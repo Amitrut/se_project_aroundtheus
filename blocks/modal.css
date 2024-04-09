@@ -140,17 +140,22 @@
 }
 
 .modal__input_type_error {
-  border-bottom: 1px solid #ff3333; /* Red bottom border to indicate error */
+  border-bottom: 1px solid #ff3333;
 }
 
 .modal__error {
-  color: #ff3333; /* Red color for the text of the error message */
-  visibility: hidden; /* Default to hidden, will show when there's an error */
-  /* Add other styles as needed */
+  color: #ff3333;
+  visibility: hidden;
 }
 
 .modal__error_visible {
-  visibility: visible; /* Show the error message */
+  visibility: visible;
+}
+
+.modal__button_disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
 }
 
 @media screen and (width < 520px) {

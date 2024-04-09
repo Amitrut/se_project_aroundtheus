@@ -154,15 +154,13 @@ addPhotoModalButton.addEventListener("click", () => closeModal(addPhotoModal));
 document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("click", (event) => {
     if (event.target === modal) {
-      modal.classList.remove("modal_opened");
+      closeModal(modal);
     }
   });
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    document.querySelectorAll(".modal").forEach((modal) => {
-      modal.classList.remove("modal_opened");
-    });
+    document.querySelectorAll(".modal_opened").forEach(closeModal);
   }
 });
