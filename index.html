@@ -65,20 +65,33 @@
         <h3 class="modal__title">Edit Profile</h3>
         <form class="modal__form modal__form-edit">
           <input
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             type="text"
             name="name"
             placeholder="Name"
             id="profile-title-input"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__error" id="owner-name-error"></span>
           <input
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             type="text"
             name="description"
             placeholder="Description"
             id="profile-description-input"
+            minlength="2"
+            maxlength="200"
+            required
           />
-          <button class="button modal__button" type="submit">Save</button>
+          <span class="modal__error" id="card-name-error"></span>
+          <button
+            class="button modal__button modal__button_disabled"
+            type="submit"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -92,20 +105,31 @@
         <h3 class="modal__title">New Place</h3>
         <form class="modal__form modal__form-add">
           <input
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             type="text"
             name="title"
             placeholder="Title"
             id="card-title-input"
+            minlength="1"
+            maxlength="30"
+            required
           />
+          <span class="modal__error" id="card-name-error"></span>
           <input
-            class="modal__input"
-            type="text"
+            class="modal__input modal__input_type_error"
+            type="url"
             name="description"
             placeholder="Image URL"
             id="card-url-input"
+            required
           />
-          <button class="button modal__button" type="submit">Save</button>
+          <span class="modal__error" id="card-name-error"></span>
+          <button
+            class="button modal__button modal__button_disabled"
+            type="submit"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -119,5 +143,6 @@
     </div>
 
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>

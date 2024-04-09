@@ -80,6 +80,17 @@
   margin-bottom: 0;
 }
 
+.modal__error {
+  font-size: 12 px;
+  line-height: 15px;
+  color: #ff0000;
+  opacity: 0;
+  position: absolute;
+  top: calc(47%);
+  left: 33px;
+  transition: opacity 0.3s;
+}
+
 .modal__button {
   width: 100%;
   padding: 10px;
@@ -126,6 +137,20 @@
   color: #fff;
   font-size: 12px;
   line-height: 14.52px;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid #ff3333; /* Red bottom border to indicate error */
+}
+
+.modal__error {
+  color: #ff3333; /* Red color for the text of the error message */
+  visibility: hidden; /* Default to hidden, will show when there's an error */
+  /* Add other styles as needed */
+}
+
+.modal__error_visible {
+  visibility: visible; /* Show the error message */
 }
 
 @media screen and (width < 520px) {
