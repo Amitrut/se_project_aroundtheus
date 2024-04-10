@@ -111,7 +111,6 @@
 }
 
 .modal__button:hover {
-  background-color: #333;
   opacity: 80%;
 }
 
@@ -156,6 +155,10 @@
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
+}
+
+.modal__button_disabled:hover {
+  opacity: 1;
 }
 
 @media screen and (width < 520px) {

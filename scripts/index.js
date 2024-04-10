@@ -143,10 +143,25 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+
+  document.addEventListener("keydown", closeModalByEscape);
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
+  if (modal.classList.contains("modal_opened")) {
+    modal.classList.remove("modal_opened");
+
+    document.removeEventListener("keydown", closeModalByEscape);
+  }
+}
+
+function closeModalByEscape(event) {
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
 }
 
 addPhotoModalButton.addEventListener("click", () => closeModal(addPhotoModal));
@@ -157,10 +172,4 @@ document.querySelectorAll(".modal").forEach((modal) => {
       closeModal(modal);
     }
   });
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    document.querySelectorAll(".modal_opened").forEach(closeModal);
-  }
 });

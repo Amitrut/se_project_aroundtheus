@@ -44,20 +44,9 @@ function setEventListeners(formEl, options) {
       checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });
-
-    inputEl.addEventListener("invalid", (e) => {
-      e.preventDefault();
-      showInputError(formEl, inputEl, inputEl.validationMessage, options);
-    });
   });
 
   toggleButtonState(inputEls, submitButton, options);
-}
-
-function setEventListeners(formEl, options) {
-  const { inputSelector } = options;
-  const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector(options.submitButtonSelector);
 }
 
 function enableValidation(options) {
