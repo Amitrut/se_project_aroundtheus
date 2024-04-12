@@ -25,7 +25,23 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 }
 
 function checkInputValidity(formEl, inputEl, options) {
+  inputEl.setCustomValidity("");
+
   if (!inputEl.validity.valid) {
+    if (inputEl.validity.tooShort) {
+      inputEl.setCustomValidity(
+        "Use at least " + inputEl.getAttribute("minlength") + " characters"
+      );
+    } else if (inputEl.validity.tooLong) {
+      inputEl.setCustomValidity(
+        "Limit to " + inputEl.getAttribute("maxlength") + " characters max"
+      );
+    } else if (inputEl.validity.valueMissing) {
+      inputEl.setCustomValidity("This field cannot be empty");
+    } else if (inputEl.validity.typeMismatch) {
+      inputEl.setCustomValidity("Please enter a valid value");
+    }
+    // Ensure the error message is up-to-date
     showInputError(formEl, inputEl, inputEl.validationMessage, options);
   } else {
     hideInputError(formEl, inputEl, options);
@@ -47,11 +63,10 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 }
 
 function setEventListeners(formEl, options) {
-  const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const { inputSelector } = options;
+  const inputEls = [...formEl.querySelectorAll(options.inputSelector)];
 
   const submitButton = formEl.querySelector(options.submitButtonSelector);
-
-  const { inputSelector } = options;
 
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", () => {
@@ -83,7 +98,7 @@ const config = {
 
   submitButtonSelector: ".modal__button",
 
-  inactiveButtonClass: ".modal__button_disabled",
+  inactiveButtonClass: "modal__button_disabled",
 
   inputErrorClass: "modal__input_type_error",
 

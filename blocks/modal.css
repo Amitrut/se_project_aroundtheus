@@ -69,7 +69,6 @@
   line-height: 17px;
   box-sizing: border-box;
   padding: 10px 0 0;
-  margin-bottom: 10px;
 }
 
 .modal__input:first-of-type {
@@ -84,16 +83,17 @@
   font-size: 12 px;
   line-height: 15px;
   color: #ff0000;
-  opacity: 0;
-  position: absolute;
-  top: calc(47%);
-  left: 33px;
+  display: block; /* Block display to ensure it appears below the input */
+  height: auto; /* Remove fixed height if previously set */
+  line-height: normal; /* Adjust line height as needed */
+  margin-bottom: 10px; /* Space after the error message */
   transition: opacity 0.3s;
+  padding-top: 10px;
 }
 
 .modal__button {
   width: 100%;
-  padding: 10px;
+
   margin-top: 44px;
   border: none;
   background-color: #000;
@@ -139,11 +139,12 @@
 }
 
 .modal__input_type_error {
-  border-bottom: 1px solid #ff3333;
+  border-bottom: 2px solid #ff3333;
 }
 
 .modal__error {
-  color: #ff3333;
+  color: red;
+  font-size: 12px;
   visibility: hidden;
 }
 
