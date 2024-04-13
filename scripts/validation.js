@@ -25,42 +25,27 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 }
 
 function checkInputValidity(formEl, inputEl, options) {
-  inputEl.setCustomValidity("");
-
   if (!inputEl.validity.valid) {
-    if (inputEl.validity.tooShort) {
-      inputEl.setCustomValidity(
-        "Use at least " + inputEl.getAttribute("minlength") + " characters"
-      );
-    } else if (inputEl.validity.tooLong) {
-      inputEl.setCustomValidity(
-        "Limit to " + inputEl.getAttribute("maxlength") + " characters max"
-      );
-    } else if (inputEl.validity.valueMissing) {
-      inputEl.setCustomValidity("This field cannot be empty");
-    } else if (inputEl.validity.typeMismatch) {
-      inputEl.setCustomValidity("Please enter a valid value");
-    }
-    // Ensure the error message is up-to-date
     showInputError(formEl, inputEl, inputEl.validationMessage, options);
   } else {
     hideInputError(formEl, inputEl, options);
   }
 }
 
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  const isInvalid = inputEls.some((inputEl) => !inputEl.validity.valid);
+const checkFormValidity = (inputs) =>
+  inputs.some((input) => !input.validity.valid);
+
+const toggleButtonState = (inputEls, submitButton, { inactiveButtonClass }) => {
+  const isInvalid = checkFormValidity(inputEls);
 
   if (isInvalid) {
     submitButton.classList.add(inactiveButtonClass);
-
     submitButton.disabled = true;
   } else {
     submitButton.classList.remove(inactiveButtonClass);
-
     submitButton.disabled = false;
   }
-}
+};
 
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
