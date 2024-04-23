@@ -32,11 +32,16 @@ const validationSettings = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
+  errorClassVisible: "modal__error_visible",
 };
 
 const cardListEl = document.querySelector(".cards__list");
 
-// Functions for modals
+const createCard = (cardData) => {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  return card.createCard();
+};
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalByEscape);
@@ -60,21 +65,17 @@ function handleImageClick(name, link) {
   const photoModal = document.querySelector("#photo-modal");
   const photoModalImg = document.querySelector(".photo-modal__image");
   const photoModalTitle = document.querySelector(".photo-modal__title");
-
   photoModalImg.src = link;
   photoModalImg.alt = name;
   photoModalTitle.textContent = name;
   openModal(photoModal);
 }
 
-// Adding initial cards
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.createCard();
+  const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 });
 
-// Form validation setup
 const profileFormValidator = new FormValidator(
   validationSettings,
   document.querySelector(".modal__form-edit")
@@ -87,9 +88,15 @@ const cardFormValidator = new FormValidator(
 );
 cardFormValidator.enableValidation();
 
-// Event listeners for modals
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
   const profileModal = document.querySelector("#profile-edit-modal");
+  const currentTitle = document.querySelector("#profile-title").textContent;
+  const currentDescription = document.querySelector(
+    "#profile-description"
+  ).textContent;
+  document.querySelector("#profile-title-input").value = currentTitle;
+  document.querySelector("#profile-description-input").value =
+    currentDescription;
   openModal(profileModal);
 });
 
@@ -105,6 +112,9 @@ document.querySelector(".modal__close-add").addEventListener("click", () => {
 
 document.querySelector(".profile__add-button").addEventListener("click", () => {
   const addCardModal = document.querySelector("#card-add-modal");
+  const form = addCardModal.querySelector(".modal__form-add");
+  form.reset();
+  cardFormValidator.toggleButtonState(); // Update button state when modal is opened
   openModal(addCardModal);
 });
 
@@ -123,7 +133,6 @@ document.querySelectorAll(".modal").forEach((modal) => {
   });
 });
 
-// Handle form submissions
 document.querySelector(".modal__form-edit").addEventListener("submit", (e) => {
   e.preventDefault();
   closeModal(document.querySelector("#profile-edit-modal"));
@@ -133,8 +142,13 @@ document.querySelector(".modal__form-add").addEventListener("submit", (e) => {
   e.preventDefault();
   const name = document.querySelector("#card-title-input").value;
   const link = document.querySelector("#card-url-input").value;
-  const newCard = new Card({ name, link }, "#card-template", handleImageClick);
-  const newCardElement = newCard.createCard();
+  if (!name.trim() || !link.trim()) {
+    console.log("Empty fields are not allowed.");
+    return; // Prevents submission if fields are empty
+  }
+  const newCardElement = createCard({ name, link });
   cardListEl.prepend(newCardElement);
+  e.target.reset(); // Reset the form fields after submission
+  cardFormValidator.toggleButtonState(); // Toggle button state after form reset
   closeModal(document.querySelector("#card-add-modal"));
 });
