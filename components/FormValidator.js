@@ -16,10 +16,12 @@ export default class FormValidator {
     );
     if (!inputElement.validity.valid) {
       errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add("modal__error_visible");
+      errorElement.classList.add(this._settings.errorClassVisible); // To show the error message
+      inputElement.classList.add(this._settings.inputErrorClass); // Add error class to the input for visual feedback
     } else {
       errorElement.textContent = "";
-      errorElement.classList.remove("modal__error_visible");
+      errorElement.classList.remove(this._settings.errorClassVisible); // Remove visibility from error message
+      inputElement.classList.remove(this._settings.inputErrorClass); // Remove error class from the input
     }
   }
 

@@ -33,6 +33,7 @@ const validationSettings = {
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   errorClassVisible: "modal__error_visible",
+  inputErrorClass: "modal__input_type_error",
 };
 
 const cardListEl = document.querySelector(".cards__list");
