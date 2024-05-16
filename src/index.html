@@ -2,30 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0 , maximum-scale:1.0"
-    />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
     <title>Around the U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img
-          src="./images/AroundtheUSLogo.svg"
-          alt="Around the U.S. Logo"
-          class="header__logo"
-        />
+        <img class="header__logo" alt="Around the U.S. Logo" />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/jacques-cousteau.jpg"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <img class="profile__image" alt="Avatar" />
           <div class="profile__info">
             <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
             <button
@@ -47,7 +33,6 @@
         <p class="footer__copyright">© 2024 Andrei Mitrut</p>
       </footer>
     </div>
-
     <template id="card-template">
       <li class="card">
         <button type="button" class="card__delete-button"></button>
@@ -58,12 +43,9 @@
         </div>
       </li>
     </template>
-    <!-- Edit Profile Modal -->
-
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close modal__close-edit" type="button"></button>
-
         <h3 class="modal__title">Edit Profile</h3>
         <form class="modal__form modal__form-edit">
           <input
@@ -100,13 +82,9 @@
         </form>
       </div>
     </div>
-
-    <!-- Add Cards Modal -->
-
     <div class="modal" id="card-add-modal">
       <div class="modal__container">
         <button class="modal__close modal__close-add" type="button"></button>
-
         <h3 class="modal__title">New Place</h3>
         <form class="modal__form modal__form-add">
           <input
@@ -138,7 +116,6 @@
         </form>
       </div>
     </div>
-
     <div class="modal" id="photo-modal">
       <div class="photo-modal__container">
         <img src="" alt="Full-size image" class="photo-modal__image" />
@@ -146,7 +123,5 @@
         <p class="photo-modal__title"></p>
       </div>
     </div>
-
-    <script src="./pages/index.js" defer type="module"></script>
   </body>
 </html>
