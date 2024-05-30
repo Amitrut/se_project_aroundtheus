@@ -3,7 +3,6 @@ import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
@@ -140,12 +139,4 @@ addCardPopup.setEventListeners();
 
 document.querySelector(".profile__add-button").addEventListener("click", () => {
   addCardPopup.open();
-});
-
-// Initialize additional modal close handling
-document.querySelectorAll(".modal__close").forEach((button) => {
-  button.addEventListener("click", () => {
-    const modal = button.closest(".modal");
-    new Popup({ popupSelector: `#${modal.id}` }).close();
-  });
 });
