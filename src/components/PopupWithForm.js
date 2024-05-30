@@ -13,7 +13,6 @@ export default class PopupWithForm extends Popup {
     this._inputList.forEach((input) => {
       this._formValues[input.name] = input.value;
     });
-    console.log("Form values captured:", this._formValues); // Debugging line
     return this._formValues;
   }
 
@@ -26,8 +25,18 @@ export default class PopupWithForm extends Popup {
     });
   }
 
+  open() {
+    super.open();
+    this._formElement.reset();
+    this._formValidator.resetValidation(); // Ensure form is reset and validated
+  }
+
   close() {
     super.close();
     this._formElement.reset();
+  }
+
+  setFormValidator(formValidator) {
+    this._formValidator = formValidator;
   }
 }

@@ -16,11 +16,11 @@ export default class FormValidator {
     );
     if (!inputElement.validity.valid) {
       errorElement.textContent = inputElement.validationMessage;
-      errorElement.classList.add(this._settings.errorClassVisible); // To show the error message
+      errorElement.classList.add(this._settings.errorClassVisible); // Show the error message
       inputElement.classList.add(this._settings.inputErrorClass); // Add error class to the input for visual feedback
     } else {
       errorElement.textContent = "";
-      errorElement.classList.remove(this._settings.errorClassVisible); // Remove visibility from error message
+      errorElement.classList.remove(this._settings.errorClassVisible); // Hide the error message
       inputElement.classList.remove(this._settings.inputErrorClass); // Remove error class from the input
     }
   }
@@ -30,7 +30,7 @@ export default class FormValidator {
   }
 
   toggleButtonState() {
-    const isFormValid = this._isFormValid(); // Use the new method here
+    const isFormValid = this._isFormValid();
     this._buttonElement.disabled = !isFormValid;
     this._buttonElement.classList.toggle(
       this._settings.inactiveButtonClass,
@@ -51,7 +51,27 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
     });
+    this._inputList.forEach((inputElement) => {
+      const errorElement = this._formElement.querySelector(
+        `#${inputElement.id}-error`
+      );
+      errorElement.textContent = ""; // Clear any existing error message
+      errorElement.classList.remove(this._settings.errorClassVisible); // Ensure the error message is hidden
+    });
     this.toggleButtonState();
     this._setEventListeners();
+  }
+
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+      inputElement.value = ""; // Clear input values
+      const errorElement = this._formElement.querySelector(
+        `#${inputElement.id}-error`
+      );
+      errorElement.textContent = ""; // Clear error message
+      errorElement.classList.remove(this._settings.errorClassVisible); // Hide error message
+      inputElement.classList.remove(this._settings.inputErrorClass); // Remove error class from input
+    });
+    this.toggleButtonState(); // Ensure the button is disabled
   }
 }

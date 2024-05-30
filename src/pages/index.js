@@ -136,6 +136,7 @@ const addCardPopup = new PopupWithForm({
 });
 
 addCardPopup.setEventListeners();
+addCardPopup.setFormValidator(cardFormValidator); // Link form validator
 
 document.querySelector(".profile__add-button").addEventListener("click", () => {
   addCardPopup.open();
