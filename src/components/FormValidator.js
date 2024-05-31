@@ -51,20 +51,13 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
     });
-    this._inputList.forEach((inputElement) => {
-      const errorElement = this._formElement.querySelector(
-        `#${inputElement.id}-error`
-      );
-      errorElement.textContent = ""; // Clear any existing error message
-      errorElement.classList.remove(this._settings.errorClassVisible); // Ensure the error message is hidden
-    });
+
     this.toggleButtonState();
     this._setEventListeners();
   }
 
   resetValidation() {
     this._inputList.forEach((inputElement) => {
-      inputElement.value = ""; // Clear input values
       const errorElement = this._formElement.querySelector(
         `#${inputElement.id}-error`
       );
