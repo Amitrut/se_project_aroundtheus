@@ -31,9 +31,6 @@ export default class PopupWithForm extends Popup {
 
   open() {
     super.open();
-    if (this._formValidator) {
-      this._formValidator.resetValidation(); // Ensure form is reset and validated
-    }
   }
 
   close() {
