@@ -51,7 +51,13 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
     });
-
+    this._inputList.forEach((inputElement) => {
+      const errorElement = this._formElement.querySelector(
+        `#${inputElement.id}-error`
+      );
+      errorElement.textContent = ""; // Clear any existing error message
+      errorElement.classList.remove(this._settings.errorClassVisible); // Ensure the error message is hidden
+    });
     this.toggleButtonState();
     this._setEventListeners();
   }
@@ -66,5 +72,10 @@ export default class FormValidator {
       inputElement.classList.remove(this._settings.inputErrorClass); // Remove error class from input
     });
     this.toggleButtonState(); // Ensure the button is disabled
+  }
+
+  disableButton() {
+    this._buttonElement.disabled = true;
+    this._buttonElement.classList.add(this._settings.inactiveButtonClass);
   }
 }
