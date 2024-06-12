@@ -1,18 +1,22 @@
+//adds elements to the DOM
+
 export default class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._items = items;
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
 
   renderItems() {
-    this._items.forEach((item) => {
-      const element = this._renderer(item);
-      this.addItem(element);
+    this._renderedItems.forEach((item) => {
+      this._renderer(item);
     });
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+  appendItem(item) {
+    this._container.append(item);
+  }
+
+  prependItem(item) {
+    this._container.prepend(item);
   }
 }
