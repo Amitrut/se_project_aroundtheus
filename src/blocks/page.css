@@ -1,11 +1,10 @@
 .page {
-  font-family: "Inter", Arial, Helvetica, sans-serif;
   background-color: black;
   color: white;
 }
 
 .page__section {
-  max-width: 880px;
+  max-width: 882px;
   width: 100%;
   position: relative;
   margin: 0 auto;
@@ -15,4 +14,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+@media screen and (max-width: 581px) {
+  .page__section {
+    max-width: 315px;
+  }
 }
